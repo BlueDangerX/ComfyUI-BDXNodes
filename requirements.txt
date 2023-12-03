@@ -1,0 +1,10 @@
+librosa
+numpy
+Pillow
+scipy
+color-matcher
+
+
+
+
+
