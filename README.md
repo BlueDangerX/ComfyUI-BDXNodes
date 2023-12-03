@@ -14,6 +14,8 @@ Various quality of life testing nodes
 
 Tired of scrolling and zooming??? Connect nodes to jump to with ALT keyboard shortcuts.
 
+Connect the output node you want to create a shortcut to Node Jumper. Not all nodes have an output node, just connect to a nearby node that has an output works well enough.
+
 ALt + 0-9 available for jumping to different nodes 
 
 ALT + backtick = Jumps to Node Jumper
