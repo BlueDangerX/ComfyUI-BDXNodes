@@ -10,6 +10,7 @@ Various quality of life testing nodes
 ## Nodes:
 
 ### Node Jumper
+![NodeJumperBanner](https://github.com/BlueDangerX/ComfyUI-BDXNodes/assets/148641997/d0e20bd9-5f8d-4d4b-9aa9-9b930d2856a8)
 
 Tired of scrolling and zooming??? Connect nodes to jump to with ALT keyboard shortcuts.
 
