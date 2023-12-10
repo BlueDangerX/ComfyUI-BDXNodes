@@ -10,15 +10,18 @@ Various quality of life testing nodes
 ## Nodes:
 
 ### Node Jumper
-![NodeJumperBanner](https://github.com/BlueDangerX/ComfyUI-BDXNodes/assets/148641997/d0e20bd9-5f8d-4d4b-9aa9-9b930d2856a8)
+![NodeJumperBanner](https://github.com/BlueDangerX/ComfyUI-BDXNodes/assets/148641997/18d5797e-b4f9-4403-89ad-6d15cbb67a63)
 
-Tired of scrolling and zooming??? Connect nodes to jump to with ALT keyboard shortcuts.
+
+Tired of scrolling and zooming??? Connect nodes to jump to with keyboard shortcuts.
 
 Connect the output node you want to create a shortcut to Node Jumper. Not all nodes have an output node, just connect to a nearby node that has an output works well enough.
 
-ALt + 0-9 available for jumping to different nodes 
+I had requests to make the modifier key chooseable but there were too many conflicting things fighting over modifier keys. Compromise was to change modifier from ALT to the Backquote aka `.
 
-ALT + backtick = Jumps to Node Jumper
+Backquote + 0-9 available for jumping to different nodes 
+
+Double tap backquote = Jumps to Node Jumper
 
 ### Test
 
