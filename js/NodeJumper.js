@@ -6,7 +6,7 @@ class NodeJumper {
         this.properties = { previousName: "", showOutputText: true, binputs: "" };
         // this.binputs = {}
         for (let index = 0; index < 10; index++) {
-            this.addInput(`Node ${(index+1)} (ALT + ${index})`, "*");    
+            this.addInput(`Node ${(index+1)} (Backquote + ${index})`, "*");    
             // this.binputs[index] = {} 
         }
 
@@ -22,11 +22,18 @@ class NodeJumper {
     }
 
     setupKeyListener() {
+        let lastBackquotePressTime = 0;
+        const doubleTapThreshold = 300;
         document.addEventListener("keydown", (event) => {
-            if (event.altKey && event.code === 'Backquote') {
-                this.centerOnNode(this);
+            if (event.code === 'Backquote') {
+                const currentTime = Date.now();
+                if (currentTime - lastBackquotePressTime <= doubleTapThreshold && currentTime - lastBackquotePressTime > 0) {
+                    // Double tap detected
+                    this.centerOnNode(this);
+                }
+                lastBackquotePressTime = currentTime;
             }
-        });
+        }); 
     }
 
     onConnectionsChange(slotType, slot, isChangeConnect, link_info) {
@@ -35,7 +42,7 @@ class NodeJumper {
             // On disconnect
             if (!isChangeConnect) {
                 this.inputs[slot].type = '*';
-                this.inputs[slot].name = `Node ${(slot+1)} (ALT + ${slot+1})`;
+                this.inputs[slot].name = `Node ${(slot+1)} (Backquote + ${slot+1})`;
             } else if (link_info && this.graph) {
                 this.handleConnectionChange(slot, link_info);
             }
@@ -49,7 +56,7 @@ class NodeJumper {
         if (fromNode) {
             const type = fromNode.outputs[link_info.origin_slot].type;
             this.inputs[slot].type = type;
-            this.inputs[slot].name = `${fromNode.title} (ALT+${slot})`;
+            this.inputs[slot].name = `${fromNode.title} (Backquote +${slot})`;
             this.addKeyListener(slot, fromNode);
             // this.addNewInputIfNeeded(slot);
             // console.log(`this inputs`, this.inputs)
@@ -74,9 +81,21 @@ class NodeJumper {
 
 
     addKeyListener(slot, targetNode) {
+        let backquotePressed = false;
+
         document.addEventListener("keydown", (event) => {
-            if (event.altKey && event.code === 'Digit'+slot) {
+            if (event.code === 'Backquote') {
+                backquotePressed = true;
+            }
+
+            if (backquotePressed && event.code === 'Digit'+slot) {
                 this.centerOnNode(targetNode);
+            }
+        });
+
+        document.addEventListener("keyup", (event) => {
+            if (event.code === 'Backquote') {
+                backquotePressed = false;
             }
         });
     }
